@@ -1,0 +1,55 @@
+#:kivy 1.11
+#:import Toolbar toolbar
+#:import BottomBar bottom_bar 
+#:import GraphTabs graph_tabs 
+
+<ContainerLayout>:
+    toolbar: _toolbar
+    bottom_bar: _bottom_bar
+    graph_w: _graph
+    start_streaming_button: _start_button
+    stop_streaming_button: _stop_button
+    orientation: 'vertical'
+    spacing: 10
+    padding: 20
+    BoxLayout:
+        padding: '2sp'
+        canvas:
+            Color:
+                rgba: 1, 1, 1, .6
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        size_hint: 1, None
+        height: '45sp'
+        Label:
+            size_hint: None, 1
+            width: '180sp'
+            text: 'PSoC-WaveDAC GUI'
+        Widget:
+        Button:
+            size_hint: None, 1
+            width: '108sp'
+            text: 'Start'
+            id: _start_button
+            disabled: True
+            on_release: root.start_streaming()
+        Button:
+            size_hint: None, 1
+            width: '108sp'
+            text: 'Stop'
+            id: _stop_button
+            disabled: True
+            on_release: root.stop_streaming()
+    BoxLayout:
+        orientation:'horizontal'
+        size_hint: 1.0, 0.8
+        spacing: 10
+        Toolbar:
+            id: _toolbar
+            size_hint: 0.2, 1.0
+        GraphTabs:
+            id: _graph
+    BottomBar:
+        id: _bottom_bar
+        size_hint: 1.0, 0.1

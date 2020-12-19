@@ -1,0 +1,51 @@
+#:kivy 1.11
+
+<WaveSelectDialog>:
+    auto_dismiss: False
+    size_hint: 0.4, 0.4
+    pos_hint: {'top': 0.5, 'right':0.5}
+    title: 'Wave Selection'
+    wave_select_spinner: _spinner
+    GridLayout:
+        cols: 2
+        spacing: 10
+        padding: 20
+        Label: 
+            text: 'Wave'
+        Spinner:
+            id: _spinner
+            text: 'Sine'
+            values: ['Sine','Triangle']
+        Widget:
+        Widget:
+        Button:
+            text: 'Cancel'
+            on_release: root.dismiss()
+        Button:
+            text: 'Update'
+            on_release: root.update_pressed()
+
+<RangeSelectDialog>:
+    auto_dismiss: False
+    size_hint: 0.4, 0.4
+    pos_hint: {'top': 0.5, 'right':0.5}
+    title: 'Range Selection'
+    range_spinner: _spinner
+    GridLayout:
+        cols: 2
+        spacing: 10
+        padding: 20
+        Label: 
+            text: 'Range'
+        Spinner:
+            values: ['Small','Large'] 
+            text: 'Large'
+            id: _spinner
+        Widget:
+        Widget:
+        Button:
+            text: 'Cancel'
+            on_release: root.dismiss()
+        Button:
+            text: 'Update'
+            on_release: root.update_pressed()

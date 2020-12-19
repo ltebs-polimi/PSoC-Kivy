@@ -1,0 +1,69 @@
+#:kivy 2.0
+#:import Graph kivy.garden.graph
+
+<GraphTabs>:
+    do_default_tab: False
+    wave_dac_tab: _wave_dac_tab
+    WaveDACPlot:
+        id: _wave_dac_tab
+
+<GraphPanelItem>:
+    graph: _graph
+    plot_settings: _plot_settings
+    BoxLayout:
+        padding: 10
+        orientation: 'horizontal'
+        Graph:
+            id: _graph
+            size_hint_x: 0.7
+        PlotSettings:
+            id: _plot_settings
+            size_hint_x: 0.3
+
+<WaveDACPlot>:
+    text: 'WaveDAC'
+
+<PlotSettings>:
+    orientation: 'vertical'
+    spacing: 10
+    padding: 10
+    seconds_spinner: _seconds_spinner
+    ymin_input: _ymin
+    ymax_input: _ymax
+    GridLayout:
+        cols: 2
+        spacing: 10
+        padding: 10
+        size_hint_y: 0.5
+        canvas.before:
+            Color:
+                rgba: 0.5, 0.5, 0.5, 1.0
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        PlotSettingsLabel:
+            text: 'Min'
+        FloatInput:
+            text: '0'
+            id: _ymin
+        PlotSettingsLabel:
+            text: 'Max'
+        FloatInput:
+            text: '5'
+            id: _ymax
+        PlotSettingsLabel:
+            text: 'Seconds'
+        Spinner:
+            id: _seconds_spinner
+            values: ['1','5','10','20']
+            text: '20'
+    Widget:
+        size_hint_y: 0.5
+
+<PlotSettingsLabel@Label>:
+    canvas.before:
+        Color:
+            rgba: 0.1, 0.1, 0.1, 1.0
+        Rectangle:
+            pos: self.pos
+            size: self.size

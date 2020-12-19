@@ -1,0 +1,25 @@
+#:kivy 1.11
+
+<Toolbar>:
+    orientation:'vertical'
+    spacing: 10
+    wave_select: _wave_select
+    range_select: _range_select
+    canvas.before:
+        Color:
+            rgba: (0.1, 0.1, 0.1, 1.0)
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    ToolbarButton:
+        id: _wave_select
+        text: 'Wave Select'
+        on_release: root.wave_select_dialog()
+    ToolbarButton:
+        id: _range_select
+        text: 'Range Select'
+        on_release: root.range_select_dialog()
+    Widget:
+
+<ToolbarButton@Button>:
+    size_hint_y: 0.1
